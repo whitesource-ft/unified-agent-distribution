@@ -194,7 +194,7 @@ RUN go install github.com/tools/godep@latest
 RUN go install github.com/LK4D4/vndr@latest
 RUN go install  github.com/kardianos/govendor@latest
 
-#All Deparacted/archived go package managers
+#All Deprecated/archived go package managers
 # RUN go install  github.com/gpmgo/gopm@latest
 # RUN go install  github.com/golang/dep/cmd/dep@latest
 # RUN go install github.com/Masterminds/glide@latest

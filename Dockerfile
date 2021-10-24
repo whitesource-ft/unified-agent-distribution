@@ -181,21 +181,25 @@ RUN apt-get update && \
 #ENV PATH ${WSS_USER_HOME}/.rbenv/bin:$PATH
 
 #### Install GO:
-#USER ${WSS_USER}
-#RUN mkdir -p ${WSS_USER_HOME}/goroot && \
-#    curl https://storage.googleapis.com/golang/go${GOLANG_VERSION}.linux-amd64.tar.gz | tar xvzf - -C ${WSS_USER_HOME}/goroot --strip-components=1
+USER ${WSS_USER}
+RUN mkdir -p ${WSS_USER_HOME}/goroot && \
+    curl https://storage.googleapis.com/golang/go${GOLANG_VERSION}.linux-amd64.tar.gz | tar xvzf - -C ${WSS_USER_HOME}/goroot --strip-components=1
 ### Set GO environment variables
-#ENV GOROOT ${WSS_USER_HOME}/goroot
-#ENV GOPATH ${WSS_USER_HOME}/gopath
-#ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
+ENV GOROOT ${WSS_USER_HOME}/goroot
+ENV GOPATH ${WSS_USER_HOME}/gopath
+ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
 ### Install package managers
-#RUN go get -u github.com/golang/dep/cmd/dep
-#RUN go get github.com/tools/godep
-#RUN go get github.com/LK4D4/vndr
-#RUN go get -u github.com/kardianos/govendor
-#RUN go get -u github.com/gpmgo/gopm
-#RUN go get github.com/Masterminds/glide
-#USER root
+
+RUN go install github.com/tools/godep@latest
+RUN go install github.com/LK4D4/vndr@latest
+RUN go install  github.com/kardianos/govendor@latest
+
+#All Deprecated/archived go package managers
+# RUN go install  github.com/gpmgo/gopm@latest
+# RUN go install  github.com/golang/dep/cmd/dep@latest
+# RUN go install github.com/Masterminds/glide@latest
+# RUN curl https://glide.sh/get | sh
+USER root
 
 #### Important note ###
 #### uncomment for:
