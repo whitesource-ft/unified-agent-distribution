@@ -71,7 +71,10 @@ export WS_APIKEY=<your-apikey>
 export SCANDIR=$(pwd)
 export WS_PRODUCTNAME=$(git config --get remote.origin.url | awk -F "/" '{print $4}')
 export WS_PROJECTNAME=$(git config --get remote.origin.url | awk -F "/" '{print $5}' | awk -F "." '{print $1}')
+```
+* Add any additional env variables for [configuration parameters](https://whitesource.atlassian.net/wiki/spaces/WD/pages/1544880156/Unified+Agent+Configuration+Parameters)
 
+```
 docker run --rm --name dockerua \
 --mount type=bind,source=$SCANDIR,target=/home/wss-scanner/Data/ \
 -e WS_APIKEY=$WS_APIKEY \

@@ -367,6 +367,7 @@ RUN curl -LJO https://github.com/whitesource/unified-agent-distribution/releases
 
 ### Turn on necessary PreSteps
 ENV WS_PYTHON_RUNPIPENVPRESTEP=true
+ENV WS_GO_COLLECTDEPENDENCIESATRUNTIME=true
 
 ### Make Data Dir for scanning
 RUN mkdir Data
