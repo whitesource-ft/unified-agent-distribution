@@ -365,6 +365,20 @@ USER ${WSS_USER}
 ### Download Unified Agent
 RUN curl -LJO https://github.com/whitesource/unified-agent-distribution/releases/latest/download/wss-unified-agent.jar
 
+### Turn on necessary PreSteps
+ENV WS_PYTHON_RUNPIPENVPRESTEP=true
+ENV WS_PYTHON_RUNPOETRYPRESTEP=true
+ENV WS_RUBY_RUNBUNDLEINSTALL=true
+ENV WS_GO_COLLECTDEPENDENCIESATRUNTIME=true
+ENV WS_SBT_RUNPRESTEP=true
+ENV WS_PHP_RUNPRESTEP=true
+ENV WS_HEX_RUNPRESTEP=true
+ENV WS_COCOAPODS_RUNPRESTEP=true
+ENV WS_R_RUNPRESTEP=true
+ENV WS_HASKELL_RUNPRESTEP=true
+ENV WS_CARGO_RUNPRESTEP=true
+ENV WS_PAKET_RUNPRESTEP=true
+
 ### Make Data Dir for scanning
 RUN mkdir Data
 

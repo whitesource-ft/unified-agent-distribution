@@ -7,6 +7,7 @@ Refer to https://github.com/whitesource/unified-agent-distribution/blob/master/d
 * Upgrade NodeJS to 12.x
 * Downgrade Cocoapods to 1.10.2
 * Uses ENV Variables & default values instead of a config file
+* Certain necessary package manager PreSteps=true
 
 ## What's Installed??
 ### Full
@@ -42,6 +43,7 @@ Refer to https://github.com/whitesource/unified-agent-distribution/blob/master/d
 * Bower (1.8.2)
 * Gradle (6.0.1)
 * python 2.7 + 3.6 + 3.7 + 3.8 + pip + pip3 + pipenv
+* Go (1.17.1)
 * dotnet-sdk-2.2, 3.1, 5.0, dotnet cli, Mono, and NuGet
 
 ## Build Directions: 
