@@ -1,32 +1,32 @@
 FROM ubuntu:18.04
 
-# Image containing:
-# base Ubuntu:18.04
-# 1.  utility apps
-# 2.  Java (1.8)
-# 3.  Maven (3.5.4)
-# 4.  Node.js (8.9.4)
-# 5.  NPM (5.6.0)
-# 6.  Yarn (1.5.1)
-# 7.  Bower (1.8.2)
-# 8.  Gradle (6.0.1)
-# 9.  python 2.7 + 3.6 + pip + pip3 + pipenv
-# 10. [optional] python 3.7
-# 11. [optional] python 3.8
-# 12. Poetry (python)
-# 13. Ruby, rbenv and ruby-build
-# 14. Go (1.12.6)
-# 15. Scala 2.12.6, Sbt 1.1.6
-# 16. PHP (7.2)
-# 17. Composer
-# 18. PHP Plugins
-# 19. Mix, Hex, Erlang and Elixir
-# 20. Cocoapods (1.5.3)
-# 21. R + Packrat
-# 22. Haskel + Cabal
-# 23. Paket
-# 24. dotnet-sdk-2.2,dotnet cli and NuGet
-# 25. Cargo
+### Image containing:
+### base Ubuntu:18.04
+### 1.  utility apps
+### 2.  Java (1.8)
+### 3.  Maven (3.5.4)
+### 4.  Node.js (12.19.0)
+### 5.  NPM (6.14.8)
+### 6.  Yarn (1.5.1)
+### 7.  Bower (1.8.2)
+### 8.  Gradle (6.0.1)
+### 9.  python 2.7 + 3.6 + pip + pip3 + pipenv
+### 10. [optional] python 3.7
+### 11. [optional] python 3.8
+### 12. Poetry (python)
+### 13. Ruby, rbenv and ruby-build
+### 14. Go (1.17.1)
+### 15. Scala 2.12.6, Sbt 1.1.6
+### 16. PHP (7.2)
+### 17. Composer
+### 18. PHP Plugins
+### 19. Mix, Hex, Erlang and Elixir
+### 20. Cocoapods (1.5.3)
+### 21. R + Packrat
+### 22. Haskel + Cabal
+### 23. dotnet-sdk-2.2, 3.1, 5.0, dotnet cli, Mono and NuGet
+### 24. Paket
+### 25. Cargo
 
 ARG JAVA_VERSION=8
 
@@ -34,7 +34,7 @@ ARG GRADLE_VERSION=6.0.1
 
 ARG POETRY_VERSION=1.0.5
 
-ARG GOLANG_VERSION=1.12.6
+ARG GOLANG_VERSION=1.17.1
 ARG MAVEN_VERSION=3.5.4
 ARG MAVEN_VERSION_SHA=CE50B1C91364CB77EFE3776F756A6D92B76D9038B0A0782F7D53ACF1E997A14D
 
@@ -145,12 +145,12 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
 #### optional: python3.8 (used with UA flag: 'python.path')
-#RUN apt-get update && \
-#    apt-get install -y python3.8 python3.8-venv && \
-#    python3.8 -m pip install --upgrade pip && \
-#    apt-get clean && \
-#    rm -rf /var/lib/apt/lists/* && \
-#    rm -rf /tmp/*
+RUN apt-get update && \
+    apt-get install -y python3.8 python3.8-venv && \
+    python3.8 -m pip install --upgrade pip && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /tmp/*
 
 #### Install Poetry (python)
 #### requires python3.X version matching the projects (defaults to python3.6)
@@ -189,12 +189,16 @@ ENV GOROOT ${WSS_USER_HOME}/goroot
 ENV GOPATH ${WSS_USER_HOME}/gopath
 ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
 ### Install package managers
-RUN go get -u github.com/golang/dep/cmd/dep
-RUN go get github.com/tools/godep
-RUN go get github.com/LK4D4/vndr
-RUN go get -u github.com/kardianos/govendor
-RUN go get -u github.com/gpmgo/gopm
-RUN go get github.com/Masterminds/glide
+
+RUN go install github.com/tools/godep@latest
+RUN go install github.com/LK4D4/vndr@latest
+RUN go install  github.com/kardianos/govendor@latest
+
+#All Deparacted/archived go package managers
+# RUN go install  github.com/gpmgo/gopm@latest
+# RUN go install  github.com/golang/dep/cmd/dep@latest
+# RUN go install github.com/Masterminds/glide@latest
+# RUN curl https://glide.sh/get | sh
 USER root
 
 #### Important note ###
