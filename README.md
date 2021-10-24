@@ -2,14 +2,14 @@
 
 Refer to https://github.com/whitesource/unified-agent-distribution/blob/master/dockerized/README.md for customization and original setup directions
 
-## Differences 
+## Changes from Template
 
 * Upgrade NodeJS to 12.x
 * Downgrade Cocoapods to 1.10.2
 * Uses ENV Variables & default values instead of a config file
 * Certain necessary package manager PreSteps=true
 
-## What's Installed??
+## Installation Differences
 ### Full
 * Java (1.8)
 * Maven (3.5.4)
@@ -60,11 +60,13 @@ docker build ./ -t dockerua:thin
 ```
 
 ## Usage Directions
-* Required ENV Variables
+#### Required ENV Variables
     * WS_APIKEY
     * WS_PRODUCTNAME
     * WS_PROJECTNAME
     * SCANDIR
+
+#### Set Required Configurations
 ```
 cd <your cloned directory>
 export WS_APIKEY=<your-apikey>
@@ -74,6 +76,7 @@ export WS_PROJECTNAME=$(git config --get remote.origin.url | awk -F "/" '{print 
 ```
 * Add any additional env variables for [configuration parameters](https://whitesource.atlassian.net/wiki/spaces/WD/pages/1544880156/Unified+Agent+Configuration+Parameters)
 
+#### Run Scan
 ```
 docker run --rm --name dockerua \
 --mount type=bind,source=$SCANDIR,target=/home/wss-scanner/Data/ \
