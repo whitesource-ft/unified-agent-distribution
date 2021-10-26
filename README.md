@@ -2,6 +2,8 @@
 
 Refer to https://github.com/whitesource/unified-agent-distribution/blob/master/dockerized/README.md for customization and original setup directions
 
+## [GitHub for Dockerfile Customization](https://github.com/whitesource-ft/unified-agent-distribution)
+
 ## Changes from Template
 
 * Upgrade NodeJS to 12.x
@@ -10,41 +12,33 @@ Refer to https://github.com/whitesource/unified-agent-distribution/blob/master/d
 * Certain necessary package manager PreSteps=true
 
 ## Installation Differences
-### Full
-* Java (1.8)
-* Maven (3.5.4)
-* Node.js (12.19.0)
-* NPM (6.14.8)
-* Yarn (1.5.1)
-* Bower (1.8.2)
-* Gradle (6.0.1)
-* python 2.7 + 3.6 + 3.7 + 3.8 + pip + pip3 + pipenv
-* Poetry (python)
-* Ruby, rbenv and ruby-build
-* Go (1.17.1)
-* Scala 2.12.6, Sbt 1.1.6
-* PHP (7.2)
-* Composer
-* PHP Plugins
-* Mix, Hex, Erlang and Elixir
-* Cocoapods (1.5.3)
-* R + Packrat
-* Haskel + Cabal
-* dotnet-sdk-2.2, 3.1, 5.0, dotnet cli, Mono, and NuGet
-* Paket
-* Cargo
 
-### Thin
-* Java (1.8)
-* Maven (3.5.4)
-* Node.js (12.19.0)
-* NPM (6.14.8)
-* Yarn (1.5.1)
-* Bower (1.8.2)
-* Gradle (6.0.1)
-* python 2.7 + 3.6 + 3.7 + 3.8 + pip + pip3 + pipenv
-* Go (1.17.1)
-* dotnet-sdk-2.2, 3.1, 5.0, dotnet cli, Mono, and NuGet
+Tool | Thin | Full
+--- | --- | ---
+Java (1.8) | X | X
+Maven (3.5.4) | X | X
+Node.js (12.19.0) | X | X
+NPM (6.14.8) | X | X
+Yarn (1.5.1) | X | X
+Bower (1.8.2) | X | X
+Gradle (6.0.1) | X | X
+python 2.7 + 3.6 + 3.7 + 3.8 + pip + pip3 + pipenv | X | X
+Poetry (python) |  | X
+Ruby, rbenv and ruby-build |  | X
+Go (1.17.1) | X | X
+Scala 2.12.6, Sbt 1.1.6 |  | X
+PHP (7.2) |  | X
+Composer |  | X
+PHP Plugins |  | X
+Mix, Hex, Erlang and Elixir |  | X
+Cocoapods (1.5.3) |  | X
+R + Packrat |  | X
+Haskel + Cabal |  | X 
+dotnet-sdk-2.2, 3.1, 5.0, dotnet cli, Mono, and NuGet |  | X
+Paket |  | X
+Cargo |  | X
+dotnet-sdk-2.2, 3.1, 5.0, dotnet cli, Mono, and NuGet | X | X
+
 
 ## Build Directions: 
 
