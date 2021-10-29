@@ -16,7 +16,7 @@ FROM ubuntu:18.04
 ### 12. Poetry (python)
 ### 13. Ruby, rbenv and ruby-build
 ### 14. Go (1.17.1)
-### 15. Scala 2.12.6, Sbt 1.1.6
+### 15. Scala 2.12.6, Sbt 1.5.1
 ### 16. PHP (7.2)
 ### 17. Composer
 ### 18. PHP Plugins
@@ -40,7 +40,7 @@ ARG MAVEN_VERSION_SHA=CE50B1C91364CB77EFE3776F756A6D92B76D9038B0A0782F7D53ACF1E9
 
 ARG SCALA_VERSION=2.12.6
 
-ARG SBT_VERSION=1.1.6
+ARG SBT_VERSION=1.5.1
 
 ARG HASKELL_GHC_VERSION=8.6.5
 
@@ -219,8 +219,8 @@ RUN wget https://downloads.lightbend.com/scala/${SCALA_VERSION}/scala-${SCALA_VE
 	dpkg -i scala-${SCALA_VERSION}.deb && \
 	rm scala-${SCALA_VERSION}.deb
 ### Install SBT
-RUN wget https://github.com/sbt/sbt/releases/download/v1.5.1/sbt-1.5.1.tgz && \
-	tar xzvf sbt-1.5.1.tgz -C /usr/share/ && \
+RUN wget https://github.com/sbt/sbt/releases/download/v${SBT_VERSION}/sbt-${SBT_VERSION}.tgz && \
+	tar xzvf sbt-${SBT_VERSION}.tgz -C /usr/share/ && \
 	update-alternatives --install /usr/bin/sbt sbt /usr/share/sbt/bin/sbt 9998
 ENV SBT_HOME /usr/share/sbt/bin/
 ENV PATH $PATH:$SBT_HOME

@@ -26,7 +26,7 @@ python 2.7 + 3.6 + 3.7 + 3.8 + pip + pip3 + pipenv | X | X
 Poetry (python) |  | X
 Ruby, rbenv and ruby-build |  | X
 Go (1.17.1) | X | X
-Scala 2.12.6, Sbt 1.1.6 |  | X
+Scala 2.12.6, Sbt 1.5.1 |  | X
 PHP (7.2) |  | X
 Composer |  | X
 PHP Plugins |  | X
