@@ -11,7 +11,7 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
-      UA_VERSION: 21.9.1.1
+      UA_VERSION: 21.10.1
 
     steps:
     - uses: actions/checkout@v2
