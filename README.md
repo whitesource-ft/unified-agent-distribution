@@ -5,8 +5,7 @@ Refer to https://github.com/whitesource/unified-agent-distribution/blob/master/d
 ## [GitHub for Dockerfile Customization](https://github.com/whitesource-ft/unified-agent-distribution)
 
 ## Changes from Template
-
-* Upgrade NodeJS to 12.x
+* Upgrade SBT to 1.5.1
 * Downgrade Cocoapods to 1.10.2
 * Uses ENV Variables & default values instead of a config file
 * Certain necessary package manager PreSteps=true
@@ -23,6 +22,7 @@ Yarn (1.5.1) | X | X
 Bower (1.8.2) | X | X
 Gradle (6.0.1) | X | X
 python 2.7 + 3.6 + 3.7 + 3.8 + pip + pip3 + pipenv | X | X
+Conda (2021.05) |  | X
 Poetry (python) |  | X
 Ruby, rbenv and ruby-build |  | X
 Go (1.17.1) | X | X
@@ -60,6 +60,11 @@ docker build ./ -t dockerua:thin
     * WS_PROJECTNAME
     * SCANDIR
 
+
+* To use the latest full image: ```docker pull whitesourceft/dockerua:full```
+* To use the latest thin image: ```docker pull whitesourceft/dockerua:thin```
+
+### Linux Instructions
 #### Set Required Configurations
 ```
 cd <your cloned directory>
@@ -70,11 +75,25 @@ export WS_PROJECTNAME=$(git config --get remote.origin.url | awk -F "/" '{print 
 ```
 * Add any additional env variables for [configuration parameters](https://whitesource.atlassian.net/wiki/spaces/WD/pages/1544880156/Unified+Agent+Configuration+Parameters)
 
-#### Run Scan
+
+#### Run Scan via Terminal
 ```
 docker run --rm --name dockerua \
 --mount type=bind,source=$SCANDIR,target=/home/wss-scanner/Data/ \
 -e WS_APIKEY=$WS_APIKEY \
 -e WS_PRODUCTNAME=$WS_PRODUCTNAME \
--e WS_PROJECTNAME=$WS_PROJECTNAME dockerua:thin
+-e WS_PROJECTNAME=$WS_PROJECTNAME whitesourceft/dockerua:thin
+```
+### Windows Instructions
+#### Set Required Configurations
+```
+cd <your cloned directory>
+set WS_APIKEY=<your-apikey>
+set SCANDIR=%cd%
+set WS_PRODUCTNAME=<my-product-name>
+set WS_PROJECTNAME=<my-project-name>
+```
+#### Run Scan via Windows Command Prompt
+```
+docker run --rm --name dockerua --mount type=bind,source=%SCANDIR%,target=/home/wss-scanner/Data/ -e WS_APIKEY=%WS_APIKEY% -e WS_PRODUCTNAME=%WS_PRODUCTNAME% -e WS_PROJECTNAME=%WS_PROJECTNAME% whitesourceft/dockerua:thin
 ```

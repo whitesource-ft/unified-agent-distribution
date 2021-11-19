@@ -13,20 +13,21 @@ FROM ubuntu:18.04
 ### 9.  python 2.7 + 3.6 + pip + pip3 + pipenv
 ### 10. [optional] python 3.7
 ### 11. [optional] python 3.8
-### 12. Poetry (python)
-### 13. Ruby, rbenv and ruby-build
-### 14. Go (1.17.1)
-### 15. Scala 2.12.6, Sbt 1.5.1
-### 16. PHP (7.2)
-### 17. Composer
-### 18. PHP Plugins
-### 19. Mix, Hex, Erlang and Elixir
-### 20. Cocoapods (1.5.3)
-### 21. R + Packrat
-### 22. Haskel + Cabal
-### 23. dotnet-sdk-2.2, 3.1, 5.0, dotnet cli, Mono and NuGet
-### 24. Paket
-### 25. Cargo
+### 12. Conda 
+### 13. Poetry (python)
+### 14. Ruby, rbenv and ruby-build
+### 15. Go (1.17.1)
+### 16. Scala 2.12.6, Sbt 1.5.1
+### 17. PHP (7.2)
+### 18. Composer
+### 19. PHP Plugins
+### 20. Mix, Hex, Erlang and Elixir
+### 21. Cocoapods (1.5.3)
+### 22. R + Packrat
+### 23. Haskel + Cabal
+### 24. dotnet-sdk-2.2, 3.1, 5.0, dotnet cli, Mono and NuGet
+### 25. Paket
+### 26. Cargo
 
 ARG JAVA_VERSION=8
 
@@ -151,6 +152,19 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
+
+#### Install Conda (python)
+USER ${WSS_USER}
+RUN cd ${WSS_USER_HOME} && \
+    wget https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh && \
+    bash Anaconda3-2021.05-Linux-x86_64.sh -b && \
+    rm Anaconda3-2021.05-Linux-x86_64.sh
+
+USER root
+RUN echo '#!/usr/bin/env bash' >> /usr/bin/conda && \
+    echo 'source ${WSS_USER_HOME}/anaconda3/etc/profile.d/conda.sh' >> /usr/bin/conda && \
+    echo '${WSS_USER_HOME}/anaconda3/bin/conda "$@"' >> /usr/bin/conda && \
+    chmod +x /usr/bin/conda
 
 #### Install Poetry (python)
 #### requires python3.X version matching the projects (defaults to python3.6)
