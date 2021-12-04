@@ -1,10 +1,10 @@
-# Dockerized Unifed-Agent
+# Dockerized Unified-Agent
 
 Refer to https://github.com/whitesource/unified-agent-distribution/blob/master/dockerized/README.md for customization and original setup directions
 
-## [GitHub for Dockerfile Customization](https://github.com/whitesource-ft/unified-agent-distribution)
+## [GitHub](https://github.com/whitesource-ft/unified-agent-distribution)
 
-## Changes from Template
+## Changes from Original Template
 * Upgrade SBT to 1.5.1
 * Downgrade Cocoapods to 1.10.2
 * Uses ENV Variables & default values instead of a config file
@@ -34,10 +34,9 @@ Mix, Hex, Erlang and Elixir |  | X
 Cocoapods (1.5.3) |  | X
 R + Packrat |  | X
 Haskel + Cabal |  | X 
-dotnet-sdk-2.2, 3.1, 5.0, dotnet cli, Mono, and NuGet |  | X
+dotnet-sdk-2.2, 3.1, 5.0, dotnet cli, Mono, and NuGet | X | X
 Paket |  | X
 Cargo |  | X
-dotnet-sdk-2.2, 3.1, 5.0, dotnet cli, Mono, and NuGet | X | X
 
 
 ## Build Directions: 
