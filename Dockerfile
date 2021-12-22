@@ -70,7 +70,7 @@ RUN apt-get update && \
 	rm -rf /tmp/*
 
 ### Install Yarn
-RUN npm i -g yarn@1.5.1
+RUN npm i -g yarn@1.22.17
 
 ### Install Bower + provide premmsions
 RUN npm i -g bower --allow-root && \

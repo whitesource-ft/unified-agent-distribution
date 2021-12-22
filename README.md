@@ -18,7 +18,7 @@ Java (1.8) | X | X
 Maven (3.5.4) | X | X
 Node.js (12.19.0) | X | X
 NPM (6.14.8) | X | X
-Yarn (1.5.1) | X | X
+Yarn (1.22.17) | X | X
 Bower (1.8.2) | X | X
 Gradle (6.0.1) | X | X
 python 2.7 + 3.6 + 3.7 + 3.8 + pip + pip3 + pipenv | X | X

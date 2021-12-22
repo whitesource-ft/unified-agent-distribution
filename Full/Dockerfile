@@ -7,7 +7,7 @@ FROM ubuntu:18.04
 ### 3.  Maven (3.5.4)
 ### 4.  Node.js (12.19.0)
 ### 5.  NPM (6.14.8)
-### 6.  Yarn (1.5.1)
+### 6.  Yarn (1.22.17)
 ### 7.  Bower (1.8.2)
 ### 8.  Gradle (6.0.1)
 ### 9.  python 2.7 + 3.6 + pip + pip3 + pipenv
@@ -106,7 +106,7 @@ RUN apt-get update && \
 	rm -rf /tmp/*
 
 ### Install Yarn
-RUN npm i -g yarn@1.5.1
+RUN npm i -g yarn@1.22.17
 
 ### Install Bower + provide premmsions
 RUN npm i -g bower --allow-root && \
