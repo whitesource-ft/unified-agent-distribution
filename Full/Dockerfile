@@ -4,12 +4,12 @@ FROM ubuntu:18.04
 ### base Ubuntu:18.04
 ### 1.  utility apps
 ### 2.  Java (1.8)
-### 3.  Maven (3.5.4)
-### 4.  Node.js (12.19.0)
-### 5.  NPM (6.14.8)
-### 6.  Yarn (1.5.1)
+### 3.  Maven (3.6.3)
+### 4.  Node.js (16.13.0)
+### 5.  NPM (7.24.0)
+### 6.  Yarn (1.22.17)
 ### 7.  Bower (1.8.2)
-### 8.  Gradle (6.0.1)
+### 8.  Gradle (6.9.1)
 ### 9.  python 2.7 + 3.6 + pip + pip3 + pipenv
 ### 10. [optional] python 3.7
 ### 11. [optional] python 3.8
@@ -17,7 +17,7 @@ FROM ubuntu:18.04
 ### 13. Poetry (python)
 ### 14. Ruby, rbenv and ruby-build
 ### 15. Go (1.17.1)
-### 16. Scala 2.12.6, Sbt 1.5.1
+### 16. Scala 2.12.6, Sbt 1.5.7
 ### 17. PHP (7.2)
 ### 18. Composer
 ### 19. PHP Plugins
@@ -31,17 +31,17 @@ FROM ubuntu:18.04
 
 ARG JAVA_VERSION=8
 
-ARG GRADLE_VERSION=6.0.1
+ARG GRADLE_VERSION=6.9.1
 
 ARG POETRY_VERSION=1.0.5
 
 ARG GOLANG_VERSION=1.17.1
-ARG MAVEN_VERSION=3.5.4
-ARG MAVEN_VERSION_SHA=CE50B1C91364CB77EFE3776F756A6D92B76D9038B0A0782F7D53ACF1E997A14D
+ARG MAVEN_VERSION=3.6.3
+ARG MAVEN_VERSION_SHA=26AD91D751B3A9A53087AEFA743F4E16A17741D3915B219CF74112BF87A438C5
 
 ARG SCALA_VERSION=2.12.6
 
-ARG SBT_VERSION=1.5.1
+ARG SBT_VERSION=1.5.7
 
 ARG HASKELL_GHC_VERSION=8.6.5
 
@@ -80,7 +80,7 @@ RUN echo "deb http://ppa.launchpad.net/openjdk-r/ppa/ubuntu bionic main" | tee /
 	rm -rf /tmp/*
 
 
-### Install Maven (3.5.4)
+### Install Maven (3.6.3)
 ARG BASE_URL=https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries
 
 RUN mkdir -p /usr/share/maven /usr/share/maven/ref && \
@@ -97,16 +97,18 @@ ENV MAVEN_HOME /usr/share/maven
 ENV MAVEN_CONFIG ${WSS_USER_HOME}/.m2
 
 
-### Install Node.js (12.19.0) + NPM (6.14.8)
+### Install Node.js (16.13.0) + NPM (8.1.0)
 RUN apt-get update && \
-	curl -sL https://deb.nodesource.com/setup_12.x | bash && \
+	curl -sL https://deb.nodesource.com/setup_16.x | bash && \
     apt-get install -y nodejs build-essential && \
     apt-get clean && \
 	rm -rf /var/lib/apt/lists/* && \
 	rm -rf /tmp/*
 
+### install npm 7.24.0 instead of 8.1.0
+RUN npm -g install npm@7.24.0
 ### Install Yarn
-RUN npm i -g yarn@1.5.1
+RUN npm i -g yarn@1.22.17
 
 ### Install Bower + provide premmsions
 RUN npm i -g bower --allow-root && \
