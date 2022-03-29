@@ -330,12 +330,6 @@ ENV HOME ${USER_HOME}
 WORKDIR ${USER_HOME}
 USER ${USER_ID}
 
-
-### Switch User ###
-ENV HOME ${WSS_USER_HOME}
-WORKDIR ${WSS_USER_HOME}
-USER ${WSS_USER}
-
 ### Download Unified Agent
 RUN curl -LJO https://github.com/whitesource/unified-agent-distribution/releases/latest/download/wss-unified-agent.jar
 
