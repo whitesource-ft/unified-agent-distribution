@@ -26,4 +26,4 @@ jobs:
 #      run: docker build ./Dockerfile -t dockerua:thin
         
     - name: Build the full Docker image
-      run: docker build -f ./Dockerfile.Full -t dockerua:full
+      run: docker build -f ./Dockerfile.Full -t dockerua:full .
