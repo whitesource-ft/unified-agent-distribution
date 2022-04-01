@@ -4,11 +4,10 @@ Refer to https://github.com/whitesource/unified-agent-distribution/blob/master/d
 
 ## [GitHub](https://github.com/whitesource-ft/unified-agent-distribution)
 
-
-## Build Directions: 
-```
-docker build ./ -t dockerua:full
-```
+## Changes from Original Template
+* Package Manager versions match repository integration
+* Uses environment variables & default values instead of a config file
+* Certain package manager PreSteps=true
 
 ## Usage Directions
 #### Required ENV Variables
@@ -17,9 +16,6 @@ docker build ./ -t dockerua:full
     * WS_PROJECTNAME
     * SCANDIR
 
-
-* To use the latest full image: ```docker pull whitesourceft/dockerua:full```
-* To use the latest thin image: ```docker pull whitesourceft/dockerua:thin```
 
 ### Linux Instructions
 #### Set Required Configurations
@@ -39,7 +35,7 @@ docker run --rm --name dockerua \
 --mount type=bind,source=$SCANDIR,target=/home/wss-scanner/Data/ \
 -e WS_APIKEY=$WS_APIKEY \
 -e WS_PRODUCTNAME=$WS_PRODUCTNAME \
--e WS_PROJECTNAME=$WS_PROJECTNAME whitesourceft/dockerua:thin
+-e WS_PROJECTNAME=$WS_PROJECTNAME whitesourceft/dockerua
 ```
 ### Windows Instructions
 #### Set Required Configurations
@@ -52,5 +48,5 @@ set WS_PROJECTNAME=<my-project-name>
 ```
 #### Run Scan via Windows Command Prompt
 ```
-docker run --rm --name dockerua --mount type=bind,source=%SCANDIR%,target=/home/wss-scanner/Data/ -e WS_APIKEY=%WS_APIKEY% -e WS_PRODUCTNAME=%WS_PRODUCTNAME% -e WS_PROJECTNAME=%WS_PROJECTNAME% whitesourceft/dockerua:thin
+docker run --rm --name dockerua --mount type=bind,source=%SCANDIR%,target=/home/wss-scanner/Data/ -e WS_APIKEY=%WS_APIKEY% -e WS_PRODUCTNAME=%WS_PRODUCTNAME% -e WS_PROJECTNAME=%WS_PROJECTNAME% whitesourceft/dockerua
 ```

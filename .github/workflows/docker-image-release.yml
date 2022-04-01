@@ -2,7 +2,7 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ release* ]
+    branches: [ master ]
 
 
 jobs:
@@ -11,7 +11,7 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
-      UA_VERSION: 22.1.2
+      UA_VERSION: 22.3.1
 
     steps:
     - uses: actions/checkout@v2
@@ -22,22 +22,13 @@ jobs:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
 
-    - name: Build the thin Docker image
-      run: docker build ./ -t dockerua:thin
-    
-    - name: Docker thin Push
-      run: |
-        docker tag dockerua:thin whitesourceft/dockerua:${{env.UA_VERSION}}-thin
-        docker push whitesourceft/dockerua:${{env.UA_VERSION}}-thin
-        docker tag dockerua:thin whitesourceft/dockerua:thin
-        docker push whitesourceft/dockerua:thin
         
     - name: Build the full Docker image
-      run: cd ./Full && docker build ./ -t dockerua:full
+      run: docker build ./ -t dockerua:${{env.UA_VERSION}}
     
-    - name: Docker thin Push
+    - name: Docker Push
       run: |
-        docker tag dockerua:full whitesourceft/dockerua:${{env.UA_VERSION}}-full
-        docker push whitesourceft/dockerua:${{env.UA_VERSION}}-full
-        docker tag dockerua:full whitesourceft/dockerua:full
-        docker push whitesourceft/dockerua:full
+        docker tag dockerua:${{env.UA_VERSION}} whitesourceft/dockerua:${{env.UA_VERSION}}
+        docker push whitesourceft/dockerua:${{env.UA_VERSION}}
+        docker tag dockerua:${{env.UA_VERSION}} whitesourceft/dockerua:latest
+        docker push whitesourceft/dockerua:latest
