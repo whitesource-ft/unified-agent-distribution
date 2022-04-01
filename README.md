@@ -4,52 +4,10 @@ Refer to https://github.com/whitesource/unified-agent-distribution/blob/master/d
 
 ## [GitHub](https://github.com/whitesource-ft/unified-agent-distribution)
 
-## Changes from Original Template
-* Upgrade SBT to 1.5.1
-* Downgrade Cocoapods to 1.10.2
-* Uses ENV Variables & default values instead of a config file
-* Certain necessary package manager PreSteps=true
-
-## Installation Differences
-
-Tool | Thin | Full
---- | --- | ---
-Java (1.8) | X | X
-Maven (3.5.4) | X | X
-Node.js (12.19.0) | X | X
-NPM (6.14.8) | X | X
-Yarn (1.5.1) | X | X
-Bower (1.8.2) | X | X
-Gradle (6.0.1) | X | X
-python 2.7 + 3.6 + 3.7 + 3.8 + pip + pip3 + pipenv | X | X
-Conda (2021.05) |  | X
-Poetry (python) |  | X
-Ruby, rbenv and ruby-build |  | X
-Go (1.17.1) | X | X
-Scala 2.12.6, Sbt 1.5.1 |  | X
-PHP (7.2) |  | X
-Composer |  | X
-PHP Plugins |  | X
-Mix, Hex, Erlang and Elixir |  | X
-Cocoapods (1.5.3) |  | X
-R + Packrat |  | X
-Haskel + Cabal |  | X 
-dotnet-sdk-2.2, 3.1, 5.0, dotnet cli, Mono, and NuGet | X | X
-Paket |  | X
-Cargo |  | X
-
 
 ## Build Directions: 
-
-### All Package Managers
 ```
-cd ./Full
 docker build ./ -t dockerua:full
-```
-
-### Less Package Managers
-```
-docker build ./ -t dockerua:thin
 ```
 
 ## Usage Directions
