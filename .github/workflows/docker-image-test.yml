@@ -21,9 +21,6 @@ jobs:
       env:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-
-#    - name: Build the thin Docker image
-#      run: docker build ./Dockerfile -t dockerua:thin
         
     - name: Build the full Docker image
-      run: docker build -f ./Dockerfile.Full -t dockerua:full .
+      run: docker build  -t dockerua:${{env.UA_VERSION}}
