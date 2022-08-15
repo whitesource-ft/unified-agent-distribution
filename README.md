@@ -1,4 +1,5 @@
 # Dockerized Unified-Agent
+:no_entry: [DEPRECATED] This repository will be inaccessible starting January 9th, 2023.  
 
 Refer to https://github.com/whitesource/unified-agent-distribution/blob/master/dockerized/README.md for customization and original setup directions
 
